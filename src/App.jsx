@@ -63,11 +63,18 @@ function App() {
               food_pairing,
               brewers_tips,
             }) => (
-              <div className="card lg:card-side bg-base-100 shadow-xl" key={id}>
-                <figure>
-                  <img src={image_url} alt={name} />
+              <div
+                className="card lg:card-side bg-base-100 shadow-xl glass"
+                key={id}
+              >
+                <figure className=" my-10 w-48 h-80 lg:w-48 lg:h-96 flex items-center justify-center overflow-hidden mx-auto lg:my-auto">
+                  <img
+                    className="object-contain w-full h-full"
+                    src={image_url}
+                    alt={name}
+                  />
                 </figure>
-                <div className="card-body">
+                <div className="card-body lg:max-w-4xl ">
                   <h2 className="card-title">{name}</h2>
                   <p>{tagline}</p>
                   <p>
