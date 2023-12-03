@@ -75,21 +75,35 @@ function App() {
                     />
                   </figure>
                   <div className="card-body lg:max-w-4xl ">
-                    <h2 className="card-title">{name}</h2>
-                    <p>{tagline}</p>
-                    <p>
-                      ABV: {abv}% | IBU: {ibu}
-                    </p>
-                    <p>First Brewed: {first_brewed}</p>
-                    <p>Description: {description}</p>
-                    <p>Brewers Tips: {brewers_tips}</p>
-                    <p>Food Pairing:</p>
+                    <h2 className="card-title text-3xl mb-5 ">{name}</h2>
+                    <div className=" text-lg font-semibold ">{tagline}</div>
+                    <div>
+                      <span className="font-bold">ABV:</span> {abv}% | IBU:{" "}
+                      {ibu}
+                    </div>
+                    <div>
+                      <span className="font-bold">First Brewed:</span>{" "}
+                      {first_brewed}
+                    </div>
+                    <div>
+                      <span className="font-bold">Description:</span>{" "}
+                      {description}
+                    </div>
+                    <div>
+                      <span className="font-bold">Brewers Tips:</span>{" "}
+                      {brewers_tips}
+                    </div>
+                    <div>
+                      <span className="font-bold">Food Pairing:</span>
+                    </div>
                     <ul>
                       {food_pairing.map((pairing, index) => (
                         <li key={index}>{pairing}</li>
                       ))}
                     </ul>
-                    <p>Ingredients:</p>
+                    <div>
+                      <span className="font-bold">Ingredients:</span>
+                    </div>
                     <ul>
                       {ingredients.malt.map((malt, index) => (
                         <li key={index}>
