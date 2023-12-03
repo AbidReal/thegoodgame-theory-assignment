@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { FaSearch } from "react-icons/fa";
 
 function App() {
   const [beers, setBeers] = useState([]);
@@ -43,70 +42,73 @@ function App() {
             value={searchTerm}
             onChange={handleSearch}
           />
-          <button className="btn btn-primary">
-            <FaSearch />
-          </button>
         </div>
 
         <div className="flex flex-col gap-20">
-          {filteredBeers.map(
-            ({
-              id,
-              name,
-              tagline,
-              image_url,
-              abv,
-              ibu,
-              description,
-              first_brewed,
-              ingredients,
-              food_pairing,
-              brewers_tips,
-            }) => (
-              <div
-                className="card lg:card-side bg-base-100 shadow-xl glass"
-                key={id}
-              >
-                <figure className=" my-10 w-48 h-80 lg:w-48 lg:h-96 flex items-center justify-center overflow-hidden mx-auto lg:my-auto">
-                  <img
-                    className="object-contain w-full h-full"
-                    src={image_url}
-                    alt={name}
-                  />
-                </figure>
-                <div className="card-body lg:max-w-4xl ">
-                  <h2 className="card-title">{name}</h2>
-                  <p>{tagline}</p>
-                  <p>
-                    ABV: {abv}% | IBU: {ibu}
-                  </p>
-                  <p>First Brewed: {first_brewed}</p>
-                  <p>Description: {description}</p>
-                  <p>Brewers Tips: {brewers_tips}</p>
-                  <p>Food Pairing:</p>
-                  <ul>
-                    {food_pairing.map((pairing, index) => (
-                      <li key={index}>{pairing}</li>
-                    ))}
-                  </ul>
-                  <p>Ingredients:</p>
-                  <ul>
-                    {ingredients.malt.map((malt, index) => (
-                      <li key={index}>
-                        {malt.amount.value} {malt.amount.unit} of {malt.name}
-                      </li>
-                    ))}
-                    {ingredients.hops.map((hop, index) => (
-                      <li key={index}>
-                        {hop.amount.value} {hop.amount.unit} of {hop.name} (
-                        {hop.add} - {hop.attribute})
-                      </li>
-                    ))}
-                    <li>Yeast: {ingredients.yeast}</li>
-                  </ul>
+          {filteredBeers.length > 0 ? (
+            filteredBeers.map(
+              ({
+                id,
+                name,
+                tagline,
+                image_url,
+                abv,
+                ibu,
+                description,
+                first_brewed,
+                ingredients,
+                food_pairing,
+                brewers_tips,
+              }) => (
+                <div
+                  className="card lg:card-side bg-base-100 shadow-xl glass"
+                  key={id}
+                >
+                  <figure className=" my-10 w-48 h-80 lg:w-48 lg:h-96 flex items-center justify-center overflow-hidden mx-auto lg:my-auto">
+                    <img
+                      className="object-contain w-full h-full"
+                      src={image_url}
+                      alt={name}
+                    />
+                  </figure>
+                  <div className="card-body lg:max-w-4xl ">
+                    <h2 className="card-title">{name}</h2>
+                    <p>{tagline}</p>
+                    <p>
+                      ABV: {abv}% | IBU: {ibu}
+                    </p>
+                    <p>First Brewed: {first_brewed}</p>
+                    <p>Description: {description}</p>
+                    <p>Brewers Tips: {brewers_tips}</p>
+                    <p>Food Pairing:</p>
+                    <ul>
+                      {food_pairing.map((pairing, index) => (
+                        <li key={index}>{pairing}</li>
+                      ))}
+                    </ul>
+                    <p>Ingredients:</p>
+                    <ul>
+                      {ingredients.malt.map((malt, index) => (
+                        <li key={index}>
+                          {malt.amount.value} {malt.amount.unit} of {malt.name}
+                        </li>
+                      ))}
+                      {ingredients.hops.map((hop, index) => (
+                        <li key={index}>
+                          {hop.amount.value} {hop.amount.unit} of {hop.name} (
+                          {hop.add} - {hop.attribute})
+                        </li>
+                      ))}
+                      <li>Yeast: {ingredients.yeast}</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              )
             )
+          ) : (
+            <div className="text-center text-gray-600 mt-4">
+              No beers found.
+            </div>
           )}
         </div>
       </div>
