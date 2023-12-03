@@ -23,6 +23,7 @@ function App() {
     fetchBeers();
   }, []);
 
+  // Search Function
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <>
+      {/* Search bar */}
       <div className="custom-container">
         <div className="flex justify-center mx-auto mb-10">
           <input
@@ -44,6 +46,7 @@ function App() {
           />
         </div>
 
+        {/* Card section */}
         <div className="flex flex-col gap-20">
           {filteredBeers.length > 0 ? (
             filteredBeers.map(
@@ -106,6 +109,7 @@ function App() {
               )
             )
           ) : (
+            // if no card found
             <div className="text-center text-gray-600 mt-4">
               No beers found.
             </div>
